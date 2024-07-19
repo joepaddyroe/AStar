@@ -53,6 +53,9 @@ public class AStarPathfinder
     
     public List<AStarNode> GetPath()
     {
+        float startTime = Time.realtimeSinceStartup;
+        Debug.Log("Start Time: " + (startTime * 1000) + "ms");
+        
         List<AStarNode> returnPath = new List<AStarNode>();
         _openList = new List<AStarNode>();
         _closedList = new List<AStarNode>();
@@ -89,6 +92,9 @@ public class AStarPathfinder
                 //retrace the path and return out
                 Debug.Log("Path Found!");
                 returnPath = RetracePath(currentNode);
+                
+                Debug.Log("Time Taken: " + ((Time.realtimeSinceStartup - startTime) * 1000) + "ms");
+                
                 return returnPath;
             }
             
