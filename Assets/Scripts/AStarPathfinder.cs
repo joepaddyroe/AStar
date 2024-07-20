@@ -53,8 +53,8 @@ public class AStarPathfinder
     
     public List<AStarNode> GetPath()
     {
-        float startTime = Time.realtimeSinceStartup;
-        Debug.Log("Start Time: " + (startTime * 1000) + "ms");
+        //float startTime = Time.realtimeSinceStartup;
+        // Debug.Log("Start Time: " + (startTime * 1000) + "ms");
         
         List<AStarNode> returnPath = new List<AStarNode>();
         _openList = new List<AStarNode>();
@@ -71,7 +71,7 @@ public class AStarPathfinder
         _minHeap.Insert(currentNode);
         
         // set a debug ticker so we dont loop endlessly during development
-        int ticker = 500;
+        int ticker = 5000;
         
         while (_openList.Count > 0 && ticker > 0)
         {
@@ -90,10 +90,10 @@ public class AStarPathfinder
             if (currentNode == _endNode)
             {
                 //retrace the path and return out
-                Debug.Log("Path Found!");
+                //Debug.Log("Path Found!");
                 returnPath = RetracePath(currentNode);
                 
-                Debug.Log("Time Taken: " + ((Time.realtimeSinceStartup - startTime) * 1000) + "ms");
+                //Debug.Log("Time Taken: " + ((Time.realtimeSinceStartup - startTime) * 1000) + "ms");
                 
                 return returnPath;
             }
