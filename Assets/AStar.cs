@@ -47,6 +47,27 @@ public class AStar : MonoBehaviour
             AssignEndNode();
         if (Input.GetMouseButtonDown(2))
             ToggleNodeWalkable();
+        
+        
+        
+        // do random pressure test
+        // DoRandomisedPressureTest();
+    }
+
+    private void DoRandomisedPressureTest()
+    {
+        _astarMap.ResetNodes();
+        ResetSceneNodes();
+        
+        _astarPathfinder.SetStartNode(Random.Range(0, _sceneNodes.Count));
+        _astarPathfinder.SetEndNode(Random.Range(0, _sceneNodes.Count));
+
+        float startTime = Time.realtimeSinceStartup;
+        //Debug.Log("Start Time: " + (startTime * 1000) + "ms");
+        
+        List<AStarNode> path = _astarPathfinder.GetPath();
+        
+        Debug.Log("Time Taken: " + ((Time.realtimeSinceStartup - startTime) * 1000) + "ms");
     }
 
     private void ResetSceneNodes()
@@ -130,7 +151,7 @@ public class AStar : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 100, _sceneNodeLayerMask))
+        if (Physics.Raycast(ray, out hit, 1000, _sceneNodeLayerMask))
         {
             return hit.collider.gameObject.GetComponent<SceneNode>();
         }
