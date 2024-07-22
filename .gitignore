@@ -4,3 +4,8 @@ Library/ArtifactDB
 Library/ArtifactDB-lock
 Library/SourceAssetDB
 Library/SourceAssetDB-lock
+Library
+obj
+UserSettings
+Assembly-CSharp.csproj
+.idea
